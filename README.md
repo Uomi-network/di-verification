@@ -21,7 +21,7 @@ The script compares "original" data (presumably from a stable, reference environ
 The repository is expected to have the following structure:
 
 ```
-numerical_stability_repo/
+di-verification/
 ├── db_1/             <-- Directory containing original data files (JSON)
 ├── db_2/             <-- Directory containing original data files (JSON)
 ├── db_3/             <-- Directory containing original data files (JSON)
@@ -29,14 +29,14 @@ numerical_stability_repo/
 ├── db_5/             <-- Directory containing original data files (JSON)
 ├── db_13/            <-- Directory containing data to be checked (JSON)
 ├── analysis_results/ <-- Output directory for plots and summary
-└── numerical_stability.py  <-- The main Python script
+└── deepseek-script.py  <-- The main Python script
 └── README.md           <-- This file
 ```
 
 *   **`db_1/`, `db_2/`, ..., `db_5/`**:  Directories containing the "original" JSON data files.  Each file represents a single data instance (e.g., a sequence or a batch).
 *   **`db_13/`**: The directory containing "check" JSON data files.  These files are named in a specific way to link them to their corresponding original files (explained later).
 *   **`analysis_results/`**: This directory will be created by the script (if it doesn't exist) to store the generated plots and a summary of the results.
-*   **`numerical_stability.py`**: The Python script performing the analysis.
+*   **`deepseek-script.py`**: The Python script performing the analysis.
 
 **Expected JSON format:** The script assumes that the data files within `db_x` and `db_13` directories are in JSON format with a particular structure. Here is a detailed breakdown with an example.
 
@@ -123,7 +123,7 @@ pip install numpy matplotlib tqdm
 
 ### 4.1 Configuration
 
-Before running the script, you might need to adjust the following configuration parameters at the beginning of `numerical_stability.py`:
+Before running the script, you might need to adjust the following configuration parameters at the beginning of `deepseek-script.py`:
 
 *   **`BASE_DIRS`**:  A list of directories containing the "original" data files.  Modify this if you have your original data in different locations.
 *   **`CHECK_DIR`**: The directory containing the "check" data files.  Change this to point to your check data.
@@ -136,7 +136,7 @@ Before running the script, you might need to adjust the following configuration 
 
 1.  **Place your data files:** Ensure your "original" JSON files are in the directories specified by `BASE_DIRS`, and your "check" JSON files are in `CHECK_DIR`. The "check" files should be named `check_machine_<original_filename>.json`.  For example, if you have an original file `db_1/data_001.json`, the corresponding check file should be named `db_13/check_machine_data_001.json`. The script uses this naming convention to match original and check files.
 
-2.  **Navigate to the directory:** Open a terminal or command prompt and navigate to the directory containing the `numerical_stability.py` script.
+2.  **Navigate to the directory:** Open a terminal or command prompt and navigate to the directory containing the `deepseek-script.py` script.
 
 3.  **Run the script:** Execute the script using Python:
 
